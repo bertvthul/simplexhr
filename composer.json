@@ -1,0 +1,28 @@
+{
+    "name": "bertvthul/simplexhr",
+    "description": "Simple xhr requests for Laravel",
+    "keywords": [
+        "ajax",
+        "xhr",
+        "request",
+    ],
+    "homepage": "https://github.com/bertvthul/simplexhr",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bert van t Hul",
+            "email": "bertvthul@gmail.com",
+            "homepage": "https://bertvthul.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "^7.0",
+        "illuminate/view": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bertvthul\\Simplexhr\\": "src"
+        }
+    }
+}
