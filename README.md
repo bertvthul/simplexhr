@@ -3,7 +3,7 @@
 This package provides a way to make XHR requests simple for your Laravel app. 
 
 ```html
-<span class="btn" data-simplexhr="Webshop.addToCart" data-values="{'id': 1}">Order</span>
+<span class="btn" data-simplexhr="Product.addToCart" data-values="{'id': 1}">Order</span>
 ```
 
 In data-simplexhr you'll provide the controllername and the functionname to call. The `data-values` can be used to provide the values needed to proces the request. When added to a form, all the values in the form are authomatically send.
@@ -11,22 +11,29 @@ In data-simplexhr you'll provide the controllername and the functionname to call
 ## Installation
 
 You can install the package via composer:
+
 ```bash
 composer require bertvthul/simplexhr
 ```
 
-## Usage
+Add the service provider to the providers array in `config\app.php`;
 
-After install, you need to include the js file in you app.js;
+```php
+Bertvthul\Simplexhr\SimplexhrServiceProvider::class,
+```
+
+And make sure the js is loaded by adding the following to your app.js;
 
 ```js
 require('./../../vendor/bertvthul/simplexhr/src/js/simplexhr.js');
 ```
 
-In your blade files add `data-simplexhr="Controller.function"` to an element that is clickable or a form. You'll need to provide a controller and a function, separated by a dot.
+## Usage
+
+In your blade files add `data-simplexhr="Controller.function"` to an element that is clickable or to a form. You'll need to provide a controller and a function, separated by a dot.
 
 ```html
-<span class="btn" data-simplexhr="Webshop.addToCart" data-values="{'id': 1}">Order</span>
+<span class="btn" data-simplexhr="Product.addToCart" data-values="{'id': 1}">Order</span>
 ```
 
 Use the `data-values` to send variables to the function.
@@ -34,7 +41,7 @@ Use the `data-values` to send variables to the function.
 You can also add it to a form:
 
 ```html
-<form data-simplexhr="Webshop.addToCart" onchange>
+<form data-simplexhr="Product.addToCart" onchange>
 	<input type="text" name="count">
 	<input type="hidden" name="object" value="1">
 </form>
@@ -47,7 +54,7 @@ In the function in your controller you could do the following;
 ```php
 public function addToCart(Request $request) 
 {
-    session(['webshop.cart.'.$request->input('object') => $request->input('count')]);
+    session(['Product.cart.'.$request->input('object') => $request->input('count')]);
     $response = [
     	'msg' => 'Item added to your cart!',
         'html' => [
