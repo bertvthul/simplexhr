@@ -67,9 +67,15 @@ public function addToCart(Request $request)
 }
 ```
 
-The html response is handled by the package. The keys are the html elements to replace, the values the content to replace them with.
+The html response is handled by the package. The keys are the html elements to replace, the values the content to replace them with. You can also use :append or :prepend on the keys:
 
-You can return whatever you like. The script calls the js function `xhrCustomCallback` when it exists. You can handle the other json response, like a message to show after the reponse:
+```php
+'html' => [
+    '#blog-items:append' => view('blog.items')->withItems($items)->render(),
+],
+```
+
+You can return whatever you like. The script calls the js function `xhrCustomCallback` when it exists. You can handle the other json response, like a message to show after the response:
 
 ```js
 $.xhrCustomCallback = function(data) {
