@@ -29,7 +29,7 @@ $(function() {
             e.preventDefault();
         }).on('change', "form[data-simplexhr][onchange]:not('.xhr-pending')", function(e) {
             e.preventDefault();
-            formSubmit($(e.target).parent('form'));
+            formSubmit($(this));
         });
 
     function formSubmit(form) {
