@@ -23,13 +23,19 @@ $(function() {
     $(document)
         .on('submit', "form[data-simplexhr]:not('.xhr-pending')", function(e){
             e.preventDefault();
-            formSubmit(e.target);
+            formSubmit($(this));
         })
         .on('submit', "form[data-simplexhr][onchange]", function(e) {
             e.preventDefault();
-        }).on('change', "form[data-simplexhr][onchange]:not('.xhr-pending')", function(e) {
+        })
+        .on('change', "form[data-simplexhr][onchange]:not('.xhr-pending')", function(e) {
             e.preventDefault();
             formSubmit($(this));
+        })
+        .on('reset', "form[data-simplexhr][onchange]:not('.xhr-pending')", function(e) {
+            setTimeout(function(t) {
+                $(t).trigger('change');
+            }, 1, $(this));
         });
 
     function formSubmit(form) {

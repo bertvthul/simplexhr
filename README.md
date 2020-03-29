@@ -6,7 +6,7 @@ This package provides a way to make XHR requests simple for your Laravel app.
 <span class="btn" data-simplexhr="Product.addToCart" data-values="{'id': 1}">Order</span>
 ```
 
-In data-simplexhr you'll provide the controllername and the functionname to call. The `data-values` can be used to provide the values needed to proces the request. When added to a form, all the values in the form are authomatically send.
+In `data-simplexhr` in the example code, provide the controllername and the functionname to call. The `data-values` can be used to provide values in the request. When added to a form, all the values in the form are automatically send.
 
 ## Installation
 
@@ -36,7 +36,7 @@ In your blade files add `data-simplexhr="Controller.function"` to an element tha
 <span class="btn" data-simplexhr="Product.addToCart" data-values="{'id': 1}">Order</span>
 ```
 
-Use the `data-values` to send variables to the function.
+Use the `data-values` to send variables in the request.
 
 You can also add it to a form:
 
@@ -47,7 +47,7 @@ You can also add it to a form:
 </form>
 ```
 
-You can use hidden fields to provide extra data. The `onchange` means the form is submitted on any change. Delete it to only send the form on a custom submit.
+You can use hidden fields to provide extra data. The `onchange` means the form is submitted on any change. Remove `onchange` to only send the form on a submit.
 
 In the function in your controller you could do the following;
 
@@ -85,6 +85,17 @@ $.xhrCustomCallback = function(data) {
 	}
 }
 ```
+
+## Config
+
+Publish the config to make local changes:
+
+```bash
+php artisan vendor:publish --provider=Bertvthul\Simplexhr\SimplexhrServiceProvider
+```
+
+The config has the following settings:
+- middleware: default is "web"
 
 ## License
 
